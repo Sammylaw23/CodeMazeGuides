@@ -7,9 +7,10 @@ namespace StringTruncationInCSharpTests
         private const int MaxLength = 10;
         private const string OriginalString = "This is a long string.";
         private readonly int _maxLengthLessThanZero = -10;
-        //private readonly int _maxLengthEqualToZero = 0;
+        private static readonly int _lengthLongerThanOriginalString = OriginalString.Length + 10;
         private static readonly string _expectedString = OriginalString.Substring(0, MaxLength);
-       
+
+               
         [Fact]
         public void WhenTruncatingAString_ThenUseSubstringMethodToTruncateTheString()
         {
@@ -29,7 +30,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseSubstringMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithSubstring(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithSubstring(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -69,7 +70,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseForLoopMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithForLoop(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithForLoop(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -110,7 +111,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseForLoopWithStringBuilderMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithForLoopStringBuilder(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithForLoopStringBuilder(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -150,7 +151,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseRegularExpressionsMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithRegularExpressions(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithRegularExpressions(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -191,7 +192,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseRemoveMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithRemove(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithRemove(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -232,7 +233,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseLINQMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithLINQ(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithLINQ(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
@@ -274,7 +275,7 @@ namespace StringTruncationInCSharpTests
         [Fact]
         public void GivenALengthGreaterThanTheStringLength_WhenTruncatingAString_ThenUseSpanMethodWithoutTruncatingTheString()
         {
-            var truncatedString = StringHelper.TruncateWithSpan(OriginalString, OriginalString.Length + 10);
+            var truncatedString = StringHelper.TruncateWithSpan(OriginalString, _lengthLongerThanOriginalString);
 
             Assert.Equal("This is a long string.", truncatedString);
         }
